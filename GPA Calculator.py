@@ -2,9 +2,7 @@ print("==================================\n")
 print("          GPA Calculator       \n")
 print("==================================\n")
 
-##############################################
-
-
+#################### init ####################
 
 def number_of_courses():
 	wrong_val = True
@@ -53,9 +51,15 @@ grades = []
 credits = []
 alphabet = "abcdefuxABCDEFGUX"
 
+
+#################### Validation ####################
+
 while courses<1:
 	print("i don\'t think thats true...Try again\n")
 	courses = number_of_courses()
+
+
+#################### Main ####################
 
 for i in range(0,courses):
 	while True:
@@ -75,6 +79,10 @@ for i in range(0,courses):
 		else:
 			break
 
+
+
+#################### Processing ####################
+
 credit_hours = sum(credits)
 avg = 0.0
 
@@ -82,6 +90,9 @@ for i in range(0,courses):
 	avg = avg + calculate(grades[i],credits[i])
 
 total_gpa = avg / credit_hours
+
+
+#################### Result ####################
 
 print("=================================")
 print(f"Your GPA is : {total_gpa}")
