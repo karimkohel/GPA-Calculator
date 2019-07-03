@@ -9,7 +9,7 @@ from tkinter import ttk # theme class
 
 root = Tk()
 root.title("GPA Calculator")
-root.iconbitmap('calc.ico')
+# root.iconbitmap('calc.ico') --> does not work on my linux machine
 # root.geometry('300x400') --> not needed after all
 
 head_font = 'Times 13 bold'
@@ -36,7 +36,7 @@ def about_us():
 
 def how_to():
 	msg.showinfo(
-		'isn\'t simple enough?',
+		'isn\'t it simple enough?',
 		'First you chose how many courses you applied for this semester, then it\'s as easy as adding your marks and clicking on Calculate!')
 
 def close():
