@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import font  as tkfont
 
 
@@ -36,12 +37,12 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Welcome to GPA Calculator 0.2", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
+        label = ttk.Label(self, text="Welcome to GPA Calculator 0.2", font=controller.title_font)
+        label.pack()#(side="top", fill="x", pady=10)
 
-        button1 = tk.Button(self, text="Go to Page One",
+        button1 = ttk.Button(self, text="Go to Page One",
                             command=lambda: controller.show_frame("PageOne"))
-        button2 = tk.Button(self, text="Go to Page Two",
+        button2 = ttk.Button(self, text="Go to Page Two",
                             command=lambda: controller.show_frame("PageTwo"))
         button1.pack()
         button2.pack()
