@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import font  as tkfont
+import os
 
 
 class GPA(tk.Tk):
@@ -8,7 +9,8 @@ class GPA(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        # tk.Tk.iconbitmap(self, default="calc.ico") --> does not work on linux
+        if os.name == 'nt':
+        	tk.Tk.iconbitmap(self, default="calc.ico")
 
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
 
