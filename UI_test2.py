@@ -5,9 +5,11 @@ from tkinter import font  as tkfont
 import tkinter.messagebox as msg
 import os
 
+#################### Inits ####################
 
+# global courses
 
-####################Functions ####################
+#################### Functions ####################
 
 def popupmsg(text):
 	msg.showinfo("Info",
@@ -42,6 +44,7 @@ class GPA(tk.Tk):
 
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic") 
         self.normal_font = tkfont.Font(family='Helvetica', size=11)
+        self.courses = tk.IntVar()
 
 
         container = tk.Frame(self) # making the master container frame for all frames to layer in
@@ -67,7 +70,7 @@ class GPA(tk.Tk):
         helpmenu.add_command(label="About us",command=about)
         menubar.add_cascade(label="Help", menu=helpmenu)
 
-
+        
         # setting chnage frame mechanism by putting frame name in tuple (by order)
         self.frames = {}
         for F in (StartPage, DataEntry, PageTwo):
@@ -80,7 +83,6 @@ class GPA(tk.Tk):
         self.show_frame("StartPage")
 
     def show_frame(self, page_name):
-
         frame = self.frames[page_name]
         frame.tkraise()
 
@@ -91,14 +93,32 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = ttk.Label(self, text="Welcome to GPA Calculator 0.2", font=controller.title_font)
-        label.pack()#(side="top", fill="x", pady=10)
+        label.pack(pady=20)#(side="top", fill="x", pady=10)
 
-        button1 = ttk.Button(self, text="Go to Page One",
+        label2 = ttk.Label(self,text="How many courses did you take ?",font=controller.normal_font)
+        label2.pack(pady=10)
+
+
+        drop_menu_options = [1,2,3,4,5,6,7,8,9]
+        # courses = tk.IntVar()
+        # self.controller.courses.set(drop_menu_options[6])
+        drop = ttk.OptionMenu(self, self.controller.courses, *drop_menu_options) # --> numbers are drop down menu options
+        drop.pack(pady=25)
+
+
+
+
+
+        button1 = ttk.Button(self, text="Start",
                             command=lambda: controller.show_frame("DataEntry"))
-        button2 = ttk.Button(self, text="Go to Page Two",
-                            command=lambda: controller.show_frame("PageTwo"))
+        # button2 = ttk.Button(self, text="Go to Page Two",
+        #                     command=lambda: controller.show_frame("PageTwo"))
         button1.pack()
-        button2.pack()
+        # button2.pack()
+
+
+        
+
 
 ########## second page ##########
 class DataEntry(tk.Frame):
@@ -106,7 +126,8 @@ class DataEntry(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = ttk.Label(self, text="This is page 1", font=controller.title_font)
+        Courses = controller.courses.get()
+        label = ttk.Label(self, text=Courses, font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
         button = ttk.Button(self, text="Go to the start page",
                            command=lambda: controller.show_frame("StartPage"))
