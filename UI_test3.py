@@ -24,6 +24,7 @@ courses = IntVar()
 courses.set(courses_num[6])
 
 grades_selection = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
+grade = StringVar()
 grades = []
 labels = []
 #################### frames ####################
@@ -43,22 +44,22 @@ def how_to():
 
 def page_2(times):
 
+	# greet_label.destroy()
+	courses_label.destroy()
+	courses_drop.destroy()
+	courses_B.destroy()
+
 	L2 = Label(root,text="Enter Grade and Credit hours for each course",font=main_font)
 	L2.grid(row=2,pady=5)
 
 	for i in range(times):
 
-		# greet_label.destroy()
-		courses_label.destroy()
-		courses_drop.destroy()
-		courses_B.destroy()
-
-		grade = StringVar()
-
 		L3 = Label(root,text=f"course {i+1}", font=main_font)
 		L3.grid(row=i*2+4,column=0,padx=50)
-		M1 = OptionMenu(root, grade, *courses_num)
+
+		M1 = OptionMenu(root, grade, *grades_selection)
 		M1.grid(row=i*2+5,column=0,padx=50,pady=5)
+
 		grades.append(grade)
 
 	# B2 = ttk.Button(root, text="Calculate", command=page_3)
