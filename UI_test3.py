@@ -6,6 +6,7 @@ from tkinter import ttk # theme class
 import os
 
 
+
 ######################################## Inits ########################################
 
 root = Tk()
@@ -22,7 +23,8 @@ courses_num = [1,2,3,4,5,6,7,8,9,10]
 courses = IntVar()
 courses.set(courses_num[6])
 
-
+grades_selection = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
+grades = []
 #################### frames ####################
 
 
@@ -38,7 +40,32 @@ def how_to():
 		'isn\'t it simple enough?',
 		'First you chose how many courses you applied for this semester, then it\'s as easy as adding your marks and clicking on Calculate!')
 
-
+def calculate(grade,credit):
+	if grade == 'A+':
+		temp = 4 * credit
+	elif grade == 'A':
+		temp = 3.86 * credit
+	elif grade == 'A-':
+		temp = 3.7 * credit
+	elif grade == 'B+':
+		temp = 3.3 * credit
+	elif grade == 'B':
+		temp = 3 * credit
+	elif grade == 'B-':
+		temp = 2.7 * credit
+	elif grade == 'C+':
+		temp = 2.3 * credit
+	elif grade == 'C':
+		temp = 2 * credit
+	elif grade == 'C-':
+		temp = 1.7 * credit
+	elif grade == 'D+':
+		temp = 1.3 * credit
+	elif grade == 'D':
+		temp = 1 * credit
+	else:
+		temp = 0 * credit
+	return temp
 
 ######################################## Main ########################################
 
@@ -78,9 +105,8 @@ greet_label = Label(root,text="Welcome to GPA Calculator #",padx=50,pady=10,font
 courses_label = Label(root,text="How many courses ?",padx=10,pady=10,font=main_font).grid(row=1,column=0)
 drop = OptionMenu(root,courses,*courses_num).grid(row=2,column=0,padx=50,pady=5)
 
-
-(pass) ## edit here testing1
-
+for i in range(courses.get()):
+	drop = OptionMenu(root,grades[i],*courses_num).grid(row=2,column=0,padx=50,pady=5)
 
 
 
