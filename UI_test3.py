@@ -3,13 +3,16 @@
 from tkinter import *
 import tkinter.messagebox as msg
 from tkinter import ttk # theme class
+import os
 
 
 ######################################## Inits ########################################
 
 root = Tk()
 root.title("GPA Calculator")
-# root.iconbitmap('calc.ico') --> does not work on my linux machine
+if os.name == 'nt':
+	tk.Tk.iconbitmap(self, default="calc.ico")
+
 # root.geometry('300x400') --> not needed after all
 
 head_font = 'Times 13 bold'
@@ -19,13 +22,9 @@ courses_num = [1,2,3,4,5,6,7,8,9,10]
 courses = IntVar()
 courses.set(courses_num[6])
 
-global frame
 
 #################### frames ####################
 
-frame1 = Frame(root).grid(row=0,column=0)
-
-frame2 = Frame(root).grid(row=0,column=0)
 
 ######################################## Functions ########################################
 
@@ -75,11 +74,12 @@ help_menu.add_command(label='About',command=about_us)
 
 #################### body ####################
 
-greet_label = Label(frame1,text="Welcome to GPA Calculator #",padx=50,pady=10,font=head_font).grid(row=0,column=0)
-courses_label = Label(frame1,text="How many courses ?",padx=10,pady=10,font=main_font).grid(row=1,column=0)
-drop = OptionMenu(frame1,courses,*courses_num).grid(row=2,column=0,padx=50,pady=5)
+greet_label = Label(root,text="Welcome to GPA Calculator #",padx=50,pady=10,font=head_font).grid(row=0,column=0)
+courses_label = Label(root,text="How many courses ?",padx=10,pady=10,font=main_font).grid(row=1,column=0)
+drop = OptionMenu(root,courses,*courses_num).grid(row=2,column=0,padx=50,pady=5)
 
 
+(pass)
 
 
 
