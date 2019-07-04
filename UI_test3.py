@@ -12,9 +12,9 @@ import os
 root = Tk()
 root.title("GPA Calculator")
 if os.name == 'nt':
-	tk.Tk.iconbitmap(self, default="calc.ico")
+	Tk.iconbitmap(root, default="calc.ico")
 
-# root.geometry('300x400') --> not needed after all
+# root.geometry('300x550')
 
 head_font = 'Times 13 bold'
 main_font = 'Times'
@@ -25,6 +25,7 @@ courses.set(courses_num[6])
 
 grades_selection = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
 grades = []
+labels = []
 #################### frames ####################
 
 
@@ -39,6 +40,28 @@ def how_to():
 	msg.showinfo(
 		'isn\'t it simple enough?',
 		'First you chose how many courses you applied for this semester, then it\'s as easy as adding your marks and clicking on Calculate!')
+
+def page_2(times):
+
+	L2 = Label(root,text="Enter Grade and Credit hours for each course",font=main_font)
+	L2.grid(row=2,pady=5)
+
+	for i in range(times):
+
+		# greet_label.destroy()
+		courses_label.destroy()
+		courses_drop.destroy()
+		courses_B.destroy()
+
+		grade = StringVar()
+
+		L3 = Label(root,text=f"course {i+1}", font=main_font)
+		L3.grid(row=i*2+4,column=0,padx=50)
+		M1 = OptionMenu(root, grade, *courses_num)
+		M1.grid(row=i*2+5,column=0,padx=50,pady=5)
+		grades.append(grade)
+
+	# B2 = ttk.Button(root, text="Calculate", command=page_3)
 
 def calculate(grade,credit):
 	if grade == 'A+':
@@ -101,12 +124,18 @@ help_menu.add_command(label='About',command=about_us)
 
 #################### body ####################
 
-greet_label = Label(root,text="Welcome to GPA Calculator #",padx=50,pady=10,font=head_font).grid(row=0,column=0)
-courses_label = Label(root,text="How many courses ?",padx=10,pady=10,font=main_font).grid(row=1,column=0)
-drop = OptionMenu(root,courses,*courses_num).grid(row=2,column=0,padx=50,pady=5)
+greet_label = Label(root,text="Welcome to GPA Calculator #",padx=50,pady=10,font=head_font)
+greet_label.grid(row=0,column=0)
 
-for i in range(courses.get()):
-	drop = OptionMenu(root,grades[i],*courses_num).grid(row=2,column=0,padx=50,pady=5)
+courses_label = Label(root,text="How many courses ?",padx=10,pady=10,font=main_font)
+courses_label.grid(row=1,column=0)
+
+courses_drop = OptionMenu(root,courses,*courses_num)
+courses_drop.grid(row=2,column=0,padx=50,pady=10)
+
+courses_B = ttk.Button(root, text="Start",command=lambda: page_2(courses.get()))
+courses_B.grid(row=3,column=0,padx=50,pady=10)
+
 
 
 
