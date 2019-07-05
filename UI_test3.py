@@ -4,6 +4,7 @@ from tkinter import *
 import tkinter.messagebox as msg
 from tkinter import ttk # theme class
 import os
+import sys
 
 
 
@@ -69,6 +70,10 @@ labels = []
 
 
 ######################################## Functions ########################################
+
+def restart():
+	python = sys.executable
+	os.execl(python, python, * sys.argv)
 
 def about_us():
 	msg.showinfo('Info',
@@ -609,7 +614,7 @@ root.config(menu=bar)
 # creating sub menu file
 file_menu = Menu(bar,tearoff=0)
 bar.add_cascade(label='File',menu=file_menu)
-file_menu.add_command(label='New Calculation')
+file_menu.add_command(label='New Calculation',command=restart)
 # filemenu.add_command(label="Save results", command=pass) ------> needs work
 file_menu.add_separator()
 file_menu.add_command(label='Exit',command=root.destroy)
