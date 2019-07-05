@@ -83,7 +83,7 @@ def about_us():
 def how_to():
 	msg.showinfo(
 		'isn\'t it simple enough?',
-		'First you chose how many courses you applied for this semester, then it\'s as easy as adding your marks and clicking on Calculate!')
+		'First you chose how many courses you applied for this semester, then it\'s as easy as adding your grades, credit hours and clicking on Calculate!')
 
 def append_courses(times):
 
@@ -620,10 +620,10 @@ file_menu.add_separator()
 file_menu.add_command(label='Exit',command=root.destroy)
 
 
-# creating sub menu view
-view_menu = Menu(bar,tearoff=0)
-bar.add_cascade(label='View',menu=view_menu)
-view_menu.add_command(label='Minimize')
+# # creating sub menu view
+# view_menu = Menu(bar,tearoff=0)
+# bar.add_cascade(label='View',menu=view_menu)
+# view_menu.add_command(label='Minimize')
 
 
 # creating sub menu help
@@ -636,7 +636,7 @@ help_menu.add_command(label='About',command=about_us)
 
 #################### body ####################
 
-greet_label = Label(root,text="Welcome to GPA Calculator #",padx=50,pady=10,font=head_font)
+greet_label = Label(root,text="Welcome to GPA Calculator 1.1",padx=50,pady=10,font=head_font)
 greet_label.grid(row=0,column=0,columnspan=3)
 
 courses_label = Label(root,text="How many courses ?",padx=10,pady=10,font=main_font)
