@@ -42,9 +42,21 @@ grade6.set(grades_selection[0])
 grade7.set(grades_selection[0])
 grade8.set(grades_selection[0])
 
+cred1 = IntVar()
+cred2 = IntVar()
+cred3 = IntVar()
+cred4 = IntVar()
+cred5 = IntVar()
+cred6 = IntVar()
+cred7 = IntVar()
+cred8 = IntVar()
+
 
 grades = []
+credits = []
 labels = []
+
+
 #################### frames ####################
 
 
@@ -67,11 +79,20 @@ def append_courses(times):
 		grades.append(grade2.get())
 		grades.append(grade3.get())
 
+		credits.append(cred1.get())
+		credits.append(cred2.get())
+		credits.append(cred2.get())
+
 	elif times == 4:
 		grades.append(grade1.get())
 		grades.append(grade2.get())
 		grades.append(grade3.get())
 		grades.append(grade4.get())
+
+		credits.append(cred1.get())
+		credits.append(cred2.get())
+		credits.append(cred3.get())
+		credits.append(cred4.get())
 
 	elif times == 5:
 		grades.append(grade1.get())
@@ -79,6 +100,12 @@ def append_courses(times):
 		grades.append(grade3.get())
 		grades.append(grade4.get())
 		grades.append(grade5.get())
+
+		credits.append(cred1.get())
+		credits.append(cred2.get())
+		credits.append(cred3.get())
+		credits.append(cred4.get())
+		credits.append(cred5.get())
 
 	elif times == 6:
 		grades.append(grade1.get())
@@ -88,6 +115,13 @@ def append_courses(times):
 		grades.append(grade5.get())
 		grades.append(grade6.get())
 
+		credits.append(cred1.get())
+		credits.append(cred2.get())
+		credits.append(cred3.get())
+		credits.append(cred4.get())
+		credits.append(cred5.get())
+		credits.append(cred6.get())
+
 	elif times == 7:
 		grades.append(grade1.get())
 		grades.append(grade2.get())
@@ -96,6 +130,14 @@ def append_courses(times):
 		grades.append(grade5.get())
 		grades.append(grade6.get())
 		grades.append(grade7.get())
+
+		credits.append(cred1.get())
+		credits.append(cred2.get())
+		credits.append(cred3.get())
+		credits.append(cred4.get())
+		credits.append(cred5.get())
+		credits.append(cred6.get())
+		credits.append(cred7.get())
 
 	elif times == 8:
 		grades.append(grade1.get())
@@ -106,6 +148,29 @@ def append_courses(times):
 		grades.append(grade6.get())
 		grades.append(grade7.get())
 		grades.append(grade8.get())
+
+		credits.append(cred1.get())
+		credits.append(cred2.get())
+		credits.append(cred3.get())
+		credits.append(cred4.get())
+		credits.append(cred5.get())
+		credits.append(cred6.get())
+		credits.append(cred7.get())
+		credits.append(cred8.get())
+
+	avg = 0.0
+
+	for i in range(times):
+		avg = avg + calculate(grades[i],credits[i])
+
+	credit_hours = sum(credits)
+	total_gpa = avg / credit_hours
+
+	results(total_gpa)
+
+def results(GPA):
+	msg.showinfo("GPA",f"youre gpa is {GPA}")
+	root.destroy()
 		
 def page_2(times):
 
@@ -115,221 +180,389 @@ def page_2(times):
 	courses_B.destroy()
 
 	Label2 = Label(root,text="Enter Grade and Credit hours for each course",font=main_font)
-	Label2.grid(row=2,pady=5)
+	Label2.grid(row=2,pady=5,columnspan=3)
 
 	if times == 3:
 
 		L1 = Label(root,text=f"course 1", font=main_font)
-		L1.grid(row=3,column=0,padx=50)
+		L1.grid(row=3,column=0,columnspan=3)
 
 		M1 = OptionMenu(root, grade1, *grades_selection)
-		M1.grid(row=4,column=0,padx=50,pady=5)
+		M1.grid(row=4,column=0,pady=5)
+
+		R1a = Radiobutton(root, text='2', variable=cred1, value=2)
+		R1b = Radiobutton(root, text='3', variable=cred1, value=3)
+		R1a.grid(row=4, column=1)
+		R1b.grid(row=4, column=2)
 
 		L2 = Label(root,text=f"course 2", font=main_font)
-		L2.grid(row=5,column=0,padx=50)
+		L2.grid(row=5,column=0,columnspan=3)
+
 
 		M2 = OptionMenu(root, grade2, *grades_selection)
-		M2.grid(row=6,column=0,padx=50,pady=5)
+		M2.grid(row=6,column=0,pady=5)
+
+		R2a = Radiobutton(root, text='2', variable=cred2, value=2)
+		R2b = Radiobutton(root, text='3', variable=cred2, value=3)
+		R2a.grid(row=6, column=1)
+		R2b.grid(row=6, column=2)
 
 		L3 = Label(root,text=f"course 3", font=main_font)
-		L3.grid(row=7,column=0,padx=50)
+		L3.grid(row=7,column=0,columnspan=3)
 
 		M3 = OptionMenu(root, grade3, *grades_selection)
-		M3.grid(row=8,column=0,padx=50,pady=5)
+		M3.grid(row=8,column=0,pady=5)
+
+		R3a = Radiobutton(root, text='2', variable=cred3, value=2)
+		R3b = Radiobutton(root, text='3', variable=cred3, value=3)
+		R3a.grid(row=8, column=1)
+		R3b.grid(row=8, column=2)
 
 	elif times == 4:
 
 		L1 = Label(root,text=f"course 1", font=main_font)
-		L1.grid(row=3,column=0,padx=50)
+		L1.grid(row=3,column=0,padx=50,columnspan=3)
 
 		M1 = OptionMenu(root, grade1, *grades_selection)
 		M1.grid(row=4,column=0,padx=50,pady=5)
 
+		R1a = Radiobutton(root, text='2', variable=cred1, value=2)
+		R1b = Radiobutton(root, text='3', variable=cred1, value=3)
+		R1a.grid(row=4, column=1)
+		R1b.grid(row=4, column=2)
+
 		L2 = Label(root,text=f"course 2", font=main_font)
-		L2.grid(row=5,column=0,padx=50)
+		L2.grid(row=5,column=0,padx=50,columnspan=3)
 
 		M2 = OptionMenu(root, grade2, *grades_selection)
 		M2.grid(row=6,column=0,padx=50,pady=5)
 
+		R2a = Radiobutton(root, text='2', variable=cred2, value=2)
+		R2b = Radiobutton(root, text='3', variable=cred2, value=3)
+		R2a.grid(row=6, column=1)
+		R2b.grid(row=6, column=2)
+
 		L3 = Label(root,text=f"course 3", font=main_font)
-		L3.grid(row=7,column=0,padx=50)
+		L3.grid(row=7,column=0,padx=50,columnspan=3)
 
 		M3 = OptionMenu(root, grade3, *grades_selection)
 		M3.grid(row=8,column=0,padx=50,pady=5)
 
+		R3a = Radiobutton(root, text='2', variable=cred3, value=2)
+		R3b = Radiobutton(root, text='3', variable=cred3, value=3)
+		R3a.grid(row=8, column=1)
+		R3b.grid(row=8, column=2)
+
 		L4 = Label(root,text=f"course 4", font=main_font)
-		L4.grid(row=9,column=0,padx=50)
+		L4.grid(row=9,column=0,padx=50,columnspan=3)
 
 		M4 = OptionMenu(root, grade4, *grades_selection)
 		M4.grid(row=10,column=0,padx=50,pady=5)
+
+		R4a = Radiobutton(root, text='2', variable=cred4, value=2)
+		R4b = Radiobutton(root, text='3', variable=cred4, value=3)
+		R4a.grid(row=10, column=1)
+		R4b.grid(row=10, column=2)
 
 	elif times == 5:
 
 		L1 = Label(root,text=f"course 1", font=main_font)
-		L1.grid(row=3,column=0,padx=50)
+		L1.grid(row=3,column=0,padx=50,columnspan=3)
 
 		M1 = OptionMenu(root, grade1, *grades_selection)
 		M1.grid(row=4,column=0,padx=50,pady=5)
 
+		R1a = Radiobutton(root, text='2', variable=cred1, value=2)
+		R1b = Radiobutton(root, text='3', variable=cred1, value=3)
+		R1a.grid(row=4, column=1)
+		R1b.grid(row=4, column=2)
+
 		L2 = Label(root,text=f"course 2", font=main_font)
-		L2.grid(row=5,column=0,padx=50)
+		L2.grid(row=5,column=0,padx=50,columnspan=3)
 
 		M2 = OptionMenu(root, grade2, *grades_selection)
 		M2.grid(row=6,column=0,padx=50,pady=5)
 
+		R2a = Radiobutton(root, text='2', variable=cred2, value=2)
+		R2b = Radiobutton(root, text='3', variable=cred2, value=3)
+		R2a.grid(row=6, column=1)
+		R2b.grid(row=6, column=2)
+
 		L3 = Label(root,text=f"course 3", font=main_font)
-		L3.grid(row=7,column=0,padx=50)
+		L3.grid(row=7,column=0,padx=50,columnspan=3)
 
 		M3 = OptionMenu(root, grade3, *grades_selection)
 		M3.grid(row=8,column=0,padx=50,pady=5)
 
+		R3a = Radiobutton(root, text='2', variable=cred3, value=2)
+		R3b = Radiobutton(root, text='3', variable=cred3, value=3)
+		R3a.grid(row=8, column=1)
+		R3b.grid(row=8, column=2)
+
 		L4 = Label(root,text=f"course 4", font=main_font)
-		L4.grid(row=9,column=0,padx=50)
+		L4.grid(row=9,column=0,padx=50,columnspan=3)
 
 		M4 = OptionMenu(root, grade4, *grades_selection)
 		M4.grid(row=10,column=0,padx=50,pady=5)
 
+		R4a = Radiobutton(root, text='2', variable=cred4, value=2)
+		R4b = Radiobutton(root, text='3', variable=cred4, value=3)
+		R4a.grid(row=10, column=1)
+		R4b.grid(row=10, column=2)
+
 		L5 = Label(root,text=f"course 5", font=main_font)
-		L5.grid(row=11,column=0,padx=50)
+		L5.grid(row=11,column=0,padx=50,columnspan=3)
 
 		M5 = OptionMenu(root, grade5, *grades_selection)
 		M5.grid(row=12,column=0,padx=50,pady=5)
+
+		R5a = Radiobutton(root, text='2', variable=cred5, value=2)
+		R5b = Radiobutton(root, text='3', variable=cred5, value=3)
+		R5a.grid(row=12, column=1)
+		R5b.grid(row=12, column=2)
 
 	elif times == 6:
 
 		L1 = Label(root,text=f"course 1", font=main_font)
-		L1.grid(row=3,column=0,padx=50)
+		L1.grid(row=3,column=0,padx=50,columnspan=3)
 
 		M1 = OptionMenu(root, grade1, *grades_selection)
 		M1.grid(row=4,column=0,padx=50,pady=5)
 
+		R1a = Radiobutton(root, text='2', variable=cred1, value=2)
+		R1b = Radiobutton(root, text='3', variable=cred1, value=3)
+		R1a.grid(row=4, column=1)
+		R1b.grid(row=4, column=2)
+
 		L2 = Label(root,text=f"course 2", font=main_font)
-		L2.grid(row=5,column=0,padx=50)
+		L2.grid(row=5,column=0,padx=50,columnspan=3)
 
 		M2 = OptionMenu(root, grade2, *grades_selection)
 		M2.grid(row=6,column=0,padx=50,pady=5)
 
+		R2a = Radiobutton(root, text='2', variable=cred2, value=2)
+		R2b = Radiobutton(root, text='3', variable=cred2, value=3)
+		R2a.grid(row=6, column=1)
+		R2b.grid(row=6, column=2)
+
 		L3 = Label(root,text=f"course 3", font=main_font)
-		L3.grid(row=7,column=0,padx=50)
+		L3.grid(row=7,column=0,padx=50,columnspan=3)
 
 		M3 = OptionMenu(root, grade3, *grades_selection)
 		M3.grid(row=8,column=0,padx=50,pady=5)
 
+		R3a = Radiobutton(root, text='2', variable=cred3, value=2)
+		R3b = Radiobutton(root, text='3', variable=cred3, value=3)
+		R3a.grid(row=8, column=1)
+		R3b.grid(row=8, column=2)
+
 		L4 = Label(root,text=f"course 4", font=main_font)
-		L4.grid(row=9,column=0,padx=50)
+		L4.grid(row=9,column=0,padx=50,columnspan=3)
 
 		M4 = OptionMenu(root, grade4, *grades_selection)
 		M4.grid(row=10,column=0,padx=50,pady=5)
 
+		R4a = Radiobutton(root, text='2', variable=cred4, value=2)
+		R4b = Radiobutton(root, text='3', variable=cred4, value=3)
+		R4a.grid(row=10, column=1)
+		R4b.grid(row=10, column=2)
+
 		L5 = Label(root,text=f"course 5", font=main_font)
-		L5.grid(row=11,column=0,padx=50)
+		L5.grid(row=11,column=0,padx=50,columnspan=3)
 
 		M5 = OptionMenu(root, grade5, *grades_selection)
 		M5.grid(row=12,column=0,padx=50,pady=5)
 
+		R5a = Radiobutton(root, text='2', variable=cred5, value=2)
+		R5b = Radiobutton(root, text='3', variable=cred5, value=3)
+		R5a.grid(row=12, column=1)
+		R5b.grid(row=12, column=2)
+
 		L6 = Label(root,text=f"course 6", font=main_font)
-		L6.grid(row=13,column=0,padx=50)
+		L6.grid(row=13,column=0,padx=50,columnspan=3)
 
 		M6 = OptionMenu(root, grade6, *grades_selection)
 		M6.grid(row=14,column=0,padx=50,pady=5)
+
+		R6a = Radiobutton(root, text='2', variable=cred6, value=2)
+		R6b = Radiobutton(root, text='3', variable=cred6, value=3)
+		R6a.grid(row=14, column=1)
+		R6b.grid(row=14, column=2)
 
 	elif times == 7:
 
 		L1 = Label(root,text=f"course 1", font=main_font)
-		L1.grid(row=3,column=0,padx=50)
+		L1.grid(row=3,column=0,padx=50,columnspan=3)
 
 		M1 = OptionMenu(root, grade1, *grades_selection)
 		M1.grid(row=4,column=0,padx=50,pady=5)
 
+		R1a = Radiobutton(root, text='2', variable=cred1, value=2)
+		R1b = Radiobutton(root, text='3', variable=cred1, value=3)
+		R1a.grid(row=4, column=1)
+		R1b.grid(row=4, column=2)
+
 		L2 = Label(root,text=f"course 2", font=main_font)
-		L2.grid(row=5,column=0,padx=50)
+		L2.grid(row=5,column=0,padx=50,columnspan=3)
 
 		M2 = OptionMenu(root, grade2, *grades_selection)
 		M2.grid(row=6,column=0,padx=50,pady=5)
 
+		R2a = Radiobutton(root, text='2', variable=cred2, value=2)
+		R2b = Radiobutton(root, text='3', variable=cred2, value=3)
+		R2a.grid(row=6, column=1)
+		R2b.grid(row=6, column=2)
+
 		L3 = Label(root,text=f"course 3", font=main_font)
-		L3.grid(row=7,column=0,padx=50)
+		L3.grid(row=7,column=0,padx=50,columnspan=3)
 
 		M3 = OptionMenu(root, grade3, *grades_selection)
 		M3.grid(row=8,column=0,padx=50,pady=5)
 
+		R3a = Radiobutton(root, text='2', variable=cred3, value=2)
+		R3b = Radiobutton(root, text='3', variable=cred3, value=3)
+		R3a.grid(row=8, column=1)
+		R3b.grid(row=8, column=2)
+
 		L4 = Label(root,text=f"course 4", font=main_font)
-		L4.grid(row=9,column=0,padx=50)
+		L4.grid(row=9,column=0,padx=50,columnspan=3)
 
 		M4 = OptionMenu(root, grade4, *grades_selection)
 		M4.grid(row=10,column=0,padx=50,pady=5)
 
+		R4a = Radiobutton(root, text='2', variable=cred4, value=2)
+		R4b = Radiobutton(root, text='3', variable=cred4, value=3)
+		R4a.grid(row=10, column=1)
+		R4b.grid(row=10, column=2)
+
 		L5 = Label(root,text=f"course 5", font=main_font)
-		L5.grid(row=11,column=0,padx=50)
+		L5.grid(row=11,column=0,padx=50,columnspan=3)
 
 		M5 = OptionMenu(root, grade5, *grades_selection)
 		M5.grid(row=12,column=0,padx=50,pady=5)
 
+		R5a = Radiobutton(root, text='2', variable=cred5, value=2)
+		R5b = Radiobutton(root, text='3', variable=cred5, value=3)
+		R5a.grid(row=12, column=1)
+		R5b.grid(row=12, column=2)
+
 		L6 = Label(root,text=f"course 6", font=main_font)
-		L6.grid(row=13,column=0,padx=50)
+		L6.grid(row=13,column=0,padx=50,columnspan=3)
 
 		M6 = OptionMenu(root, grade6, *grades_selection)
 		M6.grid(row=14,column=0,padx=50,pady=5)
 
+		R6a = Radiobutton(root, text='2', variable=cred6, value=2)
+		R6b = Radiobutton(root, text='3', variable=cred6, value=3)
+		R6a.grid(row=14, column=1)
+		R6b.grid(row=14, column=2)
+
 		L7 = Label(root,text=f"course 7", font=main_font)
-		L7.grid(row=15,column=0,padx=50)
+		L7.grid(row=15,column=0,padx=50,columnspan=3)
 
 		M7 = OptionMenu(root, grade7, *grades_selection)
 		M7.grid(row=16,column=0,padx=50,pady=5)
+
+		R7a = Radiobutton(root, text='2', variable=cred7, value=2)
+		R7b = Radiobutton(root, text='3', variable=cred7, value=3)
+		R7a.grid(row=16, column=1)
+		R7b.grid(row=16, column=2)
 
 	elif times == 8:
 
 		L1 = Label(root,text=f"course 1", font=main_font)
-		L1.grid(row=3,column=0,padx=50)
+		L1.grid(row=3,column=0,padx=50,columnspan=3)
 
 		M1 = OptionMenu(root, grade1, *grades_selection)
 		M1.grid(row=4,column=0,padx=50,pady=5)
 
+		R1a = Radiobutton(root, text='2', variable=cred1, value=2)
+		R1b = Radiobutton(root, text='3', variable=cred1, value=3)
+		R1a.grid(row=4, column=1)
+		R1b.grid(row=4, column=2)
+
 		L2 = Label(root,text=f"course 2", font=main_font)
-		L2.grid(row=5,column=0,padx=50)
+		L2.grid(row=5,column=0,padx=50,columnspan=3)
 
 		M2 = OptionMenu(root, grade2, *grades_selection)
 		M2.grid(row=6,column=0,padx=50,pady=5)
 
+		R2a = Radiobutton(root, text='2', variable=cred2, value=2)
+		R2b = Radiobutton(root, text='3', variable=cred2, value=3)
+		R2a.grid(row=6, column=1)
+		R2b.grid(row=6, column=2)
+
 		L3 = Label(root,text=f"course 3", font=main_font)
-		L3.grid(row=7,column=0,padx=50)
+		L3.grid(row=7,column=0,padx=50,columnspan=3)
 
 		M3 = OptionMenu(root, grade3, *grades_selection)
 		M3.grid(row=8,column=0,padx=50,pady=5)
 
+		R3a = Radiobutton(root, text='2', variable=cred3, value=2)
+		R3b = Radiobutton(root, text='3', variable=cred3, value=3)
+		R3a.grid(row=8, column=1)
+		R3b.grid(row=8, column=2)
+
 		L4 = Label(root,text=f"course 4", font=main_font)
-		L4.grid(row=9,column=0,padx=50)
+		L4.grid(row=9,column=0,padx=50,columnspan=3)
 
 		M4 = OptionMenu(root, grade4, *grades_selection)
 		M4.grid(row=10,column=0,padx=50,pady=5)
 
+		R4a = Radiobutton(root, text='2', variable=cred4, value=2)
+		R4b = Radiobutton(root, text='3', variable=cred4, value=3)
+		R4a.grid(row=10, column=1)
+		R4b.grid(row=10, column=2)
+
 		L5 = Label(root,text=f"course 5", font=main_font)
-		L5.grid(row=11,column=0,padx=50)
+		L5.grid(row=11,column=0,padx=50,columnspan=3)
 
 		M5 = OptionMenu(root, grade5, *grades_selection)
 		M5.grid(row=12,column=0,padx=50,pady=5)
 
+		R5a = Radiobutton(root, text='2', variable=cred5, value=2)
+		R5b = Radiobutton(root, text='3', variable=cred5, value=3)
+		R5a.grid(row=12, column=1)
+		R5b.grid(row=12, column=2)
+
 		L6 = Label(root,text=f"course 6", font=main_font)
-		L6.grid(row=13,column=0,padx=50)
+		L6.grid(row=13,column=0,padx=50,columnspan=3)
 
 		M6 = OptionMenu(root, grade6, *grades_selection)
 		M6.grid(row=14,column=0,padx=50,pady=5)
 
+		R6a = Radiobutton(root, text='2', variable=cred6, value=2)
+		R6b = Radiobutton(root, text='3', variable=cred6, value=3)
+		R6a.grid(row=14, column=1)
+		R6b.grid(row=14, column=2)
+
 		L7 = Label(root,text=f"course 7", font=main_font)
-		L7.grid(row=15,column=0,padx=50)
+		L7.grid(row=15,column=0,padx=50,columnspan=3)
 
 		M7 = OptionMenu(root, grade7, *grades_selection)
 		M7.grid(row=16,column=0,padx=50,pady=5)
 
+		R7a = Radiobutton(root, text='2', variable=cred7, value=2)
+		R7b = Radiobutton(root, text='3', variable=cred7, value=3)
+		R7a.grid(row=16, column=1)
+		R7b.grid(row=16, column=2)
+
 		L8 = Label(root,text=f"course 8", font=main_font)
-		L8.grid(row=17,column=0,padx=50)
+		L8.grid(row=17,column=0,padx=50,columnspan=3)
 
 		M8 = OptionMenu(root, grade8, *grades_selection)
 		M8.grid(row=18,column=0,padx=50,pady=5)
 
+		R8a = Radiobutton(root, text='2', variable=cred8, value=2)
+		R8b = Radiobutton(root, text='3', variable=cred8, value=3)
+		R8a.grid(row=18, column=1)
+		R8b.grid(row=18, column=2)
+
+
+
 
 	B2 = ttk.Button(root, text="Calculate", command=lambda :append_courses(times))
-	B2.grid(row=20,pady=5)
+	B2.grid(row=20,pady=5,columnspan=3)
 
 def calculate(grade,credit):
 	if grade == 'A+':
@@ -393,16 +626,16 @@ help_menu.add_command(label='About',command=about_us)
 #################### body ####################
 
 greet_label = Label(root,text="Welcome to GPA Calculator #",padx=50,pady=10,font=head_font)
-greet_label.grid(row=0,column=0)
+greet_label.grid(row=0,column=0,columnspan=3)
 
 courses_label = Label(root,text="How many courses ?",padx=10,pady=10,font=main_font)
-courses_label.grid(row=1,column=0)
+courses_label.grid(row=1,column=0,columnspan=3)
 
 courses_drop = OptionMenu(root,courses,*courses_num)
-courses_drop.grid(row=2,column=0,padx=50,pady=10)
+courses_drop.grid(row=2,column=0,padx=50,pady=10,columnspan=3)
 
 courses_B = ttk.Button(root, text="Start",command=lambda: page_2(courses.get()))
-courses_B.grid(row=3,column=0,padx=50,pady=10)
+courses_B.grid(row=3,column=0,padx=50,pady=10,columnspan=3)
 
 
 
