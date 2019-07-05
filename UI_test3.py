@@ -19,12 +19,30 @@ if os.name == 'nt':
 head_font = 'Times 13 bold'
 main_font = 'Times'
 
-courses_num = [1,2,3,4,5,6,7,8,9,10]
+courses_num = [3,4,5,6,7,8]
 courses = IntVar()
-courses.set(courses_num[6])
+courses.set(courses_num[4])
 
 grades_selection = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
-grade = StringVar()
+grade1 = StringVar()
+grade2 = StringVar()
+grade3 = StringVar()
+grade4 = StringVar()
+grade5 = StringVar()
+grade6 = StringVar()
+grade7 = StringVar()
+grade8 = StringVar()
+
+grade1.set(grades_selection[0])
+grade2.set(grades_selection[0])
+grade3.set(grades_selection[0])
+grade4.set(grades_selection[0])
+grade5.set(grades_selection[0])
+grade6.set(grades_selection[0])
+grade7.set(grades_selection[0])
+grade8.set(grades_selection[0])
+
+
 grades = []
 labels = []
 #################### frames ####################
@@ -42,6 +60,53 @@ def how_to():
 		'isn\'t it simple enough?',
 		'First you chose how many courses you applied for this semester, then it\'s as easy as adding your marks and clicking on Calculate!')
 
+def append_courses(times):
+
+	if times == 3:
+		grades.append(grade1.get())
+		grades.append(grade2.get())
+		grades.append(grade3.get())
+
+	elif times == 4:
+		grades.append(grade1.get())
+		grades.append(grade2.get())
+		grades.append(grade3.get())
+		grades.append(grade4.get())
+
+	elif times == 5:
+		grades.append(grade1.get())
+		grades.append(grade2.get())
+		grades.append(grade3.get())
+		grades.append(grade4.get())
+		grades.append(grade5.get())
+
+	elif times == 6:
+		grades.append(grade1.get())
+		grades.append(grade2.get())
+		grades.append(grade3.get())
+		grades.append(grade4.get())
+		grades.append(grade5.get())
+		grades.append(grade6.get())
+
+	elif times == 7:
+		grades.append(grade1.get())
+		grades.append(grade2.get())
+		grades.append(grade3.get())
+		grades.append(grade4.get())
+		grades.append(grade5.get())
+		grades.append(grade6.get())
+		grades.append(grade7.get())
+
+	elif times == 8:
+		grades.append(grade1.get())
+		grades.append(grade2.get())
+		grades.append(grade3.get())
+		grades.append(grade4.get())
+		grades.append(grade5.get())
+		grades.append(grade6.get())
+		grades.append(grade7.get())
+		grades.append(grade8.get())
+		
 def page_2(times):
 
 	# greet_label.destroy()
@@ -49,20 +114,222 @@ def page_2(times):
 	courses_drop.destroy()
 	courses_B.destroy()
 
-	L2 = Label(root,text="Enter Grade and Credit hours for each course",font=main_font)
-	L2.grid(row=2,pady=5)
+	Label2 = Label(root,text="Enter Grade and Credit hours for each course",font=main_font)
+	Label2.grid(row=2,pady=5)
 
-	for i in range(times):
+	if times == 3:
 
-		L3 = Label(root,text=f"course {i+1}", font=main_font)
-		L3.grid(row=i*2+4,column=0,padx=50)
+		L1 = Label(root,text=f"course 1", font=main_font)
+		L1.grid(row=3,column=0,padx=50)
 
-		M1 = OptionMenu(root, grade, *grades_selection)
-		M1.grid(row=i*2+5,column=0,padx=50,pady=5)
+		M1 = OptionMenu(root, grade1, *grades_selection)
+		M1.grid(row=4,column=0,padx=50,pady=5)
 
-		grades.append(grade)
+		L2 = Label(root,text=f"course 2", font=main_font)
+		L2.grid(row=5,column=0,padx=50)
 
-	# B2 = ttk.Button(root, text="Calculate", command=page_3)
+		M2 = OptionMenu(root, grade2, *grades_selection)
+		M2.grid(row=6,column=0,padx=50,pady=5)
+
+		L3 = Label(root,text=f"course 3", font=main_font)
+		L3.grid(row=7,column=0,padx=50)
+
+		M3 = OptionMenu(root, grade3, *grades_selection)
+		M3.grid(row=8,column=0,padx=50,pady=5)
+
+	elif times == 4:
+
+		L1 = Label(root,text=f"course 1", font=main_font)
+		L1.grid(row=3,column=0,padx=50)
+
+		M1 = OptionMenu(root, grade1, *grades_selection)
+		M1.grid(row=4,column=0,padx=50,pady=5)
+
+		L2 = Label(root,text=f"course 2", font=main_font)
+		L2.grid(row=5,column=0,padx=50)
+
+		M2 = OptionMenu(root, grade2, *grades_selection)
+		M2.grid(row=6,column=0,padx=50,pady=5)
+
+		L3 = Label(root,text=f"course 3", font=main_font)
+		L3.grid(row=7,column=0,padx=50)
+
+		M3 = OptionMenu(root, grade3, *grades_selection)
+		M3.grid(row=8,column=0,padx=50,pady=5)
+
+		L4 = Label(root,text=f"course 4", font=main_font)
+		L4.grid(row=9,column=0,padx=50)
+
+		M4 = OptionMenu(root, grade4, *grades_selection)
+		M4.grid(row=10,column=0,padx=50,pady=5)
+
+	elif times == 5:
+
+		L1 = Label(root,text=f"course 1", font=main_font)
+		L1.grid(row=3,column=0,padx=50)
+
+		M1 = OptionMenu(root, grade1, *grades_selection)
+		M1.grid(row=4,column=0,padx=50,pady=5)
+
+		L2 = Label(root,text=f"course 2", font=main_font)
+		L2.grid(row=5,column=0,padx=50)
+
+		M2 = OptionMenu(root, grade2, *grades_selection)
+		M2.grid(row=6,column=0,padx=50,pady=5)
+
+		L3 = Label(root,text=f"course 3", font=main_font)
+		L3.grid(row=7,column=0,padx=50)
+
+		M3 = OptionMenu(root, grade3, *grades_selection)
+		M3.grid(row=8,column=0,padx=50,pady=5)
+
+		L4 = Label(root,text=f"course 4", font=main_font)
+		L4.grid(row=9,column=0,padx=50)
+
+		M4 = OptionMenu(root, grade4, *grades_selection)
+		M4.grid(row=10,column=0,padx=50,pady=5)
+
+		L5 = Label(root,text=f"course 5", font=main_font)
+		L5.grid(row=11,column=0,padx=50)
+
+		M5 = OptionMenu(root, grade5, *grades_selection)
+		M5.grid(row=12,column=0,padx=50,pady=5)
+
+	elif times == 6:
+
+		L1 = Label(root,text=f"course 1", font=main_font)
+		L1.grid(row=3,column=0,padx=50)
+
+		M1 = OptionMenu(root, grade1, *grades_selection)
+		M1.grid(row=4,column=0,padx=50,pady=5)
+
+		L2 = Label(root,text=f"course 2", font=main_font)
+		L2.grid(row=5,column=0,padx=50)
+
+		M2 = OptionMenu(root, grade2, *grades_selection)
+		M2.grid(row=6,column=0,padx=50,pady=5)
+
+		L3 = Label(root,text=f"course 3", font=main_font)
+		L3.grid(row=7,column=0,padx=50)
+
+		M3 = OptionMenu(root, grade3, *grades_selection)
+		M3.grid(row=8,column=0,padx=50,pady=5)
+
+		L4 = Label(root,text=f"course 4", font=main_font)
+		L4.grid(row=9,column=0,padx=50)
+
+		M4 = OptionMenu(root, grade4, *grades_selection)
+		M4.grid(row=10,column=0,padx=50,pady=5)
+
+		L5 = Label(root,text=f"course 5", font=main_font)
+		L5.grid(row=11,column=0,padx=50)
+
+		M5 = OptionMenu(root, grade5, *grades_selection)
+		M5.grid(row=12,column=0,padx=50,pady=5)
+
+		L6 = Label(root,text=f"course 6", font=main_font)
+		L6.grid(row=13,column=0,padx=50)
+
+		M6 = OptionMenu(root, grade6, *grades_selection)
+		M6.grid(row=14,column=0,padx=50,pady=5)
+
+	elif times == 7:
+
+		L1 = Label(root,text=f"course 1", font=main_font)
+		L1.grid(row=3,column=0,padx=50)
+
+		M1 = OptionMenu(root, grade1, *grades_selection)
+		M1.grid(row=4,column=0,padx=50,pady=5)
+
+		L2 = Label(root,text=f"course 2", font=main_font)
+		L2.grid(row=5,column=0,padx=50)
+
+		M2 = OptionMenu(root, grade2, *grades_selection)
+		M2.grid(row=6,column=0,padx=50,pady=5)
+
+		L3 = Label(root,text=f"course 3", font=main_font)
+		L3.grid(row=7,column=0,padx=50)
+
+		M3 = OptionMenu(root, grade3, *grades_selection)
+		M3.grid(row=8,column=0,padx=50,pady=5)
+
+		L4 = Label(root,text=f"course 4", font=main_font)
+		L4.grid(row=9,column=0,padx=50)
+
+		M4 = OptionMenu(root, grade4, *grades_selection)
+		M4.grid(row=10,column=0,padx=50,pady=5)
+
+		L5 = Label(root,text=f"course 5", font=main_font)
+		L5.grid(row=11,column=0,padx=50)
+
+		M5 = OptionMenu(root, grade5, *grades_selection)
+		M5.grid(row=12,column=0,padx=50,pady=5)
+
+		L6 = Label(root,text=f"course 6", font=main_font)
+		L6.grid(row=13,column=0,padx=50)
+
+		M6 = OptionMenu(root, grade6, *grades_selection)
+		M6.grid(row=14,column=0,padx=50,pady=5)
+
+		L7 = Label(root,text=f"course 7", font=main_font)
+		L7.grid(row=15,column=0,padx=50)
+
+		M7 = OptionMenu(root, grade7, *grades_selection)
+		M7.grid(row=16,column=0,padx=50,pady=5)
+
+	elif times == 8:
+
+		L1 = Label(root,text=f"course 1", font=main_font)
+		L1.grid(row=3,column=0,padx=50)
+
+		M1 = OptionMenu(root, grade1, *grades_selection)
+		M1.grid(row=4,column=0,padx=50,pady=5)
+
+		L2 = Label(root,text=f"course 2", font=main_font)
+		L2.grid(row=5,column=0,padx=50)
+
+		M2 = OptionMenu(root, grade2, *grades_selection)
+		M2.grid(row=6,column=0,padx=50,pady=5)
+
+		L3 = Label(root,text=f"course 3", font=main_font)
+		L3.grid(row=7,column=0,padx=50)
+
+		M3 = OptionMenu(root, grade3, *grades_selection)
+		M3.grid(row=8,column=0,padx=50,pady=5)
+
+		L4 = Label(root,text=f"course 4", font=main_font)
+		L4.grid(row=9,column=0,padx=50)
+
+		M4 = OptionMenu(root, grade4, *grades_selection)
+		M4.grid(row=10,column=0,padx=50,pady=5)
+
+		L5 = Label(root,text=f"course 5", font=main_font)
+		L5.grid(row=11,column=0,padx=50)
+
+		M5 = OptionMenu(root, grade5, *grades_selection)
+		M5.grid(row=12,column=0,padx=50,pady=5)
+
+		L6 = Label(root,text=f"course 6", font=main_font)
+		L6.grid(row=13,column=0,padx=50)
+
+		M6 = OptionMenu(root, grade6, *grades_selection)
+		M6.grid(row=14,column=0,padx=50,pady=5)
+
+		L7 = Label(root,text=f"course 7", font=main_font)
+		L7.grid(row=15,column=0,padx=50)
+
+		M7 = OptionMenu(root, grade7, *grades_selection)
+		M7.grid(row=16,column=0,padx=50,pady=5)
+
+		L8 = Label(root,text=f"course 8", font=main_font)
+		L8.grid(row=17,column=0,padx=50)
+
+		M8 = OptionMenu(root, grade8, *grades_selection)
+		M8.grid(row=18,column=0,padx=50,pady=5)
+
+
+	B2 = ttk.Button(root, text="Calculate", command=lambda :append_courses(times))
+	B2.grid(row=20,pady=5)
 
 def calculate(grade,credit):
 	if grade == 'A+':
