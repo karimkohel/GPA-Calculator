@@ -51,6 +51,14 @@ cred6 = IntVar()
 cred7 = IntVar()
 cred8 = IntVar()
 
+cred1.set(3)
+cred2.set(3)
+cred3.set(3)
+cred4.set(3)
+cred5.set(3)
+cred6.set(3)
+cred7.set(3)
+cred8.set(3)
 
 grades = []
 credits = []
@@ -169,7 +177,7 @@ def append_courses(times):
 	results(total_gpa)
 
 def results(GPA):
-	msg.showinfo("GPA",f"youre gpa is {GPA}")
+	msg.showinfo("GPA",f"youre gpa is\n {GPA}")
 	root.destroy()
 		
 def page_2(times):
@@ -557,8 +565,6 @@ def page_2(times):
 		R8b = Radiobutton(root, text='3', variable=cred8, value=3)
 		R8a.grid(row=18, column=1)
 		R8b.grid(row=18, column=2)
-
-
 
 
 	B2 = ttk.Button(root, text="Calculate", command=lambda :append_courses(times))
