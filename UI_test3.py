@@ -77,7 +77,7 @@ def restart():
 
 def about_us():
 	msg.showinfo('Info',
-		'This is the work of karim kohel.\nstarted on the 2nd of june 2019 and finished after 3 months of procrastination on the @th of july 2019\nfind me @karimkohel on instagram, or github for this project\'s repository'
+		'This is the work of Karim Kohel.\nstarted on the 2nd of june 2019 and finished after 3 months of procrastination on the 5th of july 2019\nfind me @karimkohel on instagram, or github for this project\'s repository\n\n  copyright © KarimKohel\n'
 		)
 
 def how_to():
@@ -182,7 +182,7 @@ def append_courses(times):
 	results(total_gpa)
 
 def results(GPA):
-	msg.showinfo("GPA",f"youre gpa is\n {GPA}")
+	msg.showinfo("Results",f"youre GPA is\n {GPA}")
 	root.destroy()
 		
 def page_2(times):
