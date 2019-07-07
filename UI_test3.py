@@ -182,7 +182,7 @@ def append_courses(times):
 	results(total_gpa)
 
 def results(GPA):
-	msg.showinfo("Results",f"youre GPA \n {GPA}")
+	msg.showinfo("Results",f"your GPA is\n {GPA}")
 	root.destroy()
 		
 def page_2(times):
@@ -634,7 +634,7 @@ help_menu.add_command(label='About',command=about_us)
 
 
 
-#################### body ####################
+#################### main body ####################
 
 greet_label = Label(root,text="Welcome to GPA Calculator 1.2",padx=50,pady=10,font=head_font)
 greet_label.grid(row=0,column=0,columnspan=3)
