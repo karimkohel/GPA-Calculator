@@ -3,7 +3,7 @@ print("          GPA Calculator       \n")
 print("==================================\n")
 
 #################### init ####################
-
+#hi
 def number_of_courses():
 	wrong_val = True
 	while wrong_val:
